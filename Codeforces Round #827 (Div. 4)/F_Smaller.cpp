@@ -35,35 +35,35 @@ void solve(){
     string s = "a", t = "a";
     string x;
     ll s_len = 1, t_len = 1;
-    char top = 'a';
-    char pop = 'a';
+    char t_val = 'a';
+    char s_val = 'a';
     for(int i = 0; i < q; i++){
         cin >> d >> k >> x;
         if(d == 1){
-            if(pop == 'a'){
+            if(s_val == 'a'){
                 for(auto& elem: x){
                     if(elem != 'a'){
-                        pop = elem;break;
+                        s_val = elem;break;
                     }
                 }
             }
             s_len+= k * x.length();
         }
         else{
-            if(top == 'a'){
+            if(t_val == 'a'){
                 for(auto& elem: x){
                     if(elem != 'a'){
-                        top = elem;break;
+                        t_val = elem;break;
                     }
                 }
             }
              t_len+= k * x.length();
         }
-        if(top != 'a'){
+        if(t_val != 'a'){
             cout << "YES\n";continue;
         }
             
-        if(pop == 'a' && s_len < t_len) cout << "YES\n"; 
+        if(s_val == 'a' && s_len < t_len) cout << "YES\n"; 
         else cout << "NO\n";        
     }        
 }

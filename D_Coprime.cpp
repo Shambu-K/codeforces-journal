@@ -32,14 +32,18 @@ void solve(){
     int n;
     cin >> n;
     vi a(n);
-    int two_count = 0;
-    for(auto i = 0; i < n; i++){
+    for(auto i = 0;i < n; i++)
         cin >> a[i];
+    
+    vector<pair<int, int>> coprimes(1000);
+    for(auto i = 0; i< 1000; i++){
+        for(int j = 0; j < 1000; j++){
+            if(__gcd(i+1,j+1) == 1) coprimes.push_back(make_pair(i+1,j+1));
+        }
     }
-    //logic:- total possible 2s obtainable and if it is less than n then print -1
-    //if greater than n, check if its enough from the array numbers then print 0
-    //otherwise start with the number which gives the highest 2 power, to minimize the no. of operations
-
+    for(int i = 0; i < n; i++){
+        
+    }
 }
 
 int main(){

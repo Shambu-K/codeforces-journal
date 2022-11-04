@@ -31,15 +31,19 @@ using vll = V<ll>;
 void solve(){
     int n;
     cin >> n;
-    vi a(n);
-    int two_count = 0;
+    vi a(n), b(n);
+    long long ans = 0;
     for(auto i = 0; i < n; i++){
         cin >> a[i];
+        ans+= a[i];
     }
-    //logic:- total possible 2s obtainable and if it is less than n then print -1
-    //if greater than n, check if its enough from the array numbers then print 0
-    //otherwise start with the number which gives the highest 2 power, to minimize the no. of operations
-
+    int temp = 0;
+    for(auto i = 0; i < n; i++){
+        cin >> b[i];
+        ans+= b[i];
+        temp = max(temp, b[i]);
+    }
+    cout << ans - temp;
 }
 
 int main(){

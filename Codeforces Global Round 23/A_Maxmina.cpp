@@ -29,17 +29,18 @@ using vll = V<ll>;
 
 
 void solve(){
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
+    int one_count = 0;
     vi a(n);
-    int two_count = 0;
     for(auto i = 0; i < n; i++){
         cin >> a[i];
+        if(a[i] == 1) one_count++;
     }
-    //logic:- total possible 2s obtainable and if it is less than n then print -1
-    //if greater than n, check if its enough from the array numbers then print 0
-    //otherwise start with the number which gives the highest 2 power, to minimize the no. of operations
-
+    if(one_count > 0) cout << "YES";
+    else cout << "NO";
+    
+    
 }
 
 int main(){

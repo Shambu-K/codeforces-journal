@@ -31,15 +31,16 @@ using vll = V<ll>;
 void solve(){
     int n;
     cin >> n;
-    vi a(n);
-    int two_count = 0;
-    for(auto i = 0; i < n; i++){
-        cin >> a[i];
+    vi even, odd;
+    for(int i = 1; i <= n; i++){
+        if(i % 2 == 0) even.push_back(i);
+        else odd.push_back(i);
     }
-    //logic:- total possible 2s obtainable and if it is less than n then print -1
-    //if greater than n, check if its enough from the array numbers then print 0
-    //otherwise start with the number which gives the highest 2 power, to minimize the no. of operations
-
+    sort(even.rbegin(), even.rend());
+    for(int i = 0; i < odd.size(); i++)
+        cout << odd[i] << " ";
+    for(int i = 0; i < even.size(); i++)
+        cout << even[i] << " ";
 }
 
 int main(){

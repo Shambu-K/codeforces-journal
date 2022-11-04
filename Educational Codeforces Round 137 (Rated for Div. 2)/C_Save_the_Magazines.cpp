@@ -27,18 +27,33 @@ using pll = pair<ll,ll>;
 using vi  = V<int>;
 using vll = V<ll>;
 
+bool onElem(){
+
+}
+
+bool rightOfElem(){
+
+}
+
 
 void solve(){
     int n;
     cin >> n;
+    string s;
+    cin >> s;
     vi a(n);
-    int two_count = 0;
+    int one_count = 0;
     for(auto i = 0; i < n; i++){
         cin >> a[i];
     }
-    //logic:- total possible 2s obtainable and if it is less than n then print -1
-    //if greater than n, check if its enough from the array numbers then print 0
-    //otherwise start with the number which gives the highest 2 power, to minimize the no. of operations
+     
+    
+
+    int ans = 0;
+    for(int i = 0; i < n; i++){
+        if(s[i] == '1') ans+= a[i];
+    }
+    cout << ans;
 
 }
 

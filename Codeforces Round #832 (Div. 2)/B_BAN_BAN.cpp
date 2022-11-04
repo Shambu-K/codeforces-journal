@@ -30,16 +30,27 @@ using vll = V<ll>;
 
 void solve(){
     int n;
+    // int temp = n;
     cin >> n;
-    vi a(n);
-    int two_count = 0;
-    for(auto i = 0; i < n; i++){
-        cin >> a[i];
+    if(n == 1){
+        cout << 1 << "\n";
+        cout << 1 << " " << 2;
+        return;
     }
-    //logic:- total possible 2s obtainable and if it is less than n then print -1
-    //if greater than n, check if its enough from the array numbers then print 0
-    //otherwise start with the number which gives the highest 2 power, to minimize the no. of operations
-
+    int minop = n/2;
+    if(n%2 == 0) cout << minop;
+    else cout << minop + 1;
+    cout << "\n";
+    int l = 2;
+    int r;
+    if(n%2 == 0) r = n*3;
+    else r = (n-1)*3; 
+    for(int i = 0; i < n/2; i++){
+        cout << l << " " << r << "\n";
+        l+= 3;
+        r-= 3;
+    }
+    if(n%2 != 0) cout << l << " " << n*3; //in case n is odd, one extra operation
 }
 
 int main(){

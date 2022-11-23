@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
+ 
 #define FAST ios::sync_with_stdio(0); cin.tie(0)
 template<class T> struct V: vector<T>{using vector<T>::vector;
     void sort()			{std::sort(this->begin(), this->end());}
@@ -13,10 +13,10 @@ template<class T> struct V: vector<T>{using vector<T>::vector;
 };
 #define pY {cout << "YES"; return;}
 #define pN {cout << "NO";  return;}
-
+ 
 #define FOR(i, n)                for(int i = 0; i < (int)n; ++i)
 #define all(v)                   v.begin(), v.end()
-
+ 
 #define F  first
 #define S  second
 constexpr char nl = '\n';
@@ -26,59 +26,45 @@ using pii = pair<int,int>;
 using pll = pair<ll,ll>;
 using vi  = V<int>;
 using vll = V<ll>;
-
-
+ 
+ 
+ll calculateCount(vi &s){
+    ll count = 0, ans = 0;
+    int n = s.size();
+    for(int i = n-1; i >= 0; i--){
+        if(s[i] == 0) count++;
+        else ans+= count;
+    }
+    return ans;
+ 
+}
 void solve(){
     int n;
     cin >> n;
     vi s(n);
     cin >> s;
-    vi lmost = s, rmost = s;
-    int i  = 0;
-    while(true){
-        if(lmost[i] == 0){
-            lmost[i] = 1; break;
-        } 
-        i++;
-    }
-    int j = n-1;
-    while(true){
-        if(rmost[j] == 1){
-            rmost[j] = 0; break;
-        } 
-        j--;
-    }
-    
-    if(n==1){
-        std::cout << 0; return;
-    }
-    if(n==2){
-        std::cout << 1; return;
-    }
-    int ans = 0;
-    vi zero_count(n, 0);
-    for(int i = n-2; i >= 0; i--){
-        if(lmost[i+1] == 0) zero_count[i] = 1+zero_count[i+1];
-        else zero_count[i] = zero_count[i+1];
-    }
-    int sum = 0;
+    ll ans = calculateCount(s);
     for(auto i = 0; i < n; i++){
-        if(lmost[i] == 1) sum+= zero_count[i];
+        if(s[i] == 0){
+            s[i] = 1;
+            ll val1 = calculateCount(s);
+            ans = max(val1, ans);
+            s[i] = 0;
+            break;
+        }
     }
-    ans = max(ans, sum);
-    int sum2 = 0;
-    vi dup(n, 0);
-    for(int i = n-2; i >= 0; i--){
-        if(rmost[i+1] == 0) dup[i] = dup[i+1]+1;
-        else dup[i] = dup[i+1]; 
+    for(auto i = n-1; i >= 0; i--){
+        if(s[i] == 1){
+            s[i] = 0;
+            ll val2 = calculateCount(s);
+            ans = max(val2, ans);
+            s[i] = 1;
+            break;
+        }
     }
-    for(auto i = 0; i < n; i++){
-        if(rmost[i] == 1) sum2+= dup[i];
-    }    
-    ans = max(sum2, ans);
-    std::cout << ans;
+    cout << ans;
 }
-
+ 
 int main(){
     int T;
     cin >> T;

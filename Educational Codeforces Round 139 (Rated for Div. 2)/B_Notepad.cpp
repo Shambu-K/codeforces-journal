@@ -1,0 +1,97 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define FAST ios::sync_with_stdio(0); cin.tie(0)
+template<class T> struct V: vector<T>{using vector<T>::vector;
+    void sort()			{std::sort(this->begin(), this->end());}
+    void sort_dsc() 	{std::sort(this->begin(), this->end(), greater<T>());}
+    auto sum() 			{T sum = 0; for(auto& i: *this) sum += i; return sum;}
+    auto freqs() 		{map<T, int> freq; for(auto& i: *this) freq[i]++; return freq;}
+    friend ostream& operator<<(ostream& out, const V<T>& v) {for(auto& i: v) out << i << ' '; return out;}
+    friend istream& operator>>(istream& in, V<T>& v) {for(auto& i: v) in >> i; return in;}
+};
+#define pY {cout << "YES"; return;}
+#define pN {cout << "NO";  return;}
+
+#define FOR(i, n)                for(int i = 0; i < (int)n; ++i)
+#define all(v)                   v.begin(), v.end()
+
+#define F  first
+#define S  second
+constexpr char nl = '\n';
+constexpr int MOD = 1000000007;
+using ll  = long long int;
+using pii = pair<int,int>;
+using pll = pair<ll,ll>;
+using vi  = V<int>;
+using vll = V<ll>;
+
+
+void solve(){
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    if(n == 1){
+        cout << "NO";
+        return;
+    }
+    int temp = 1;
+    for(auto i = 0; i < n-1; i++){
+        if(s[i] == s[i+1]){
+            temp++;
+            if(temp%2 == 0 && temp > 2){
+                cout << "YES"; return;
+            }   
+        } 
+        else temp = 1;        
+        }
+    
+    map<string, int> subs;
+    string k = "";
+    for(int i = 0; i < n; i++){
+        k = k+s[i];
+        if(i != n-1) k = k+s[i+1];
+        if(i > 0 && i < n-1 && s[i]==s[i+1] && s[i] == s[i-1]){
+            k = "";
+        }
+        else subs[k]++;
+        k = "";
+    }
+
+    // string bs = "";
+    // if(n%2 != 0){
+    //     bs = bs+s[n-2];
+    //     bs = bs+s[n-1];
+    //     if(k != bs)subs[bs]++;
+
+    // }
+    for(auto&elem: subs){
+        if(elem.second > 1){
+            cout << "YES";return;
+        }
+    }
+    cout << "NO";
+
+    // map<string, int> freqs;
+    // FOR(i, n-1){
+    //     freqs[s.substr(i,2)]++;
+    //     if(s[i] == s[i+1]) i++;
+    // }
+    // for(auto& [k,f]: freqs){
+    //     if(f>1) pY;
+    // }
+    // pN;
+}
+
+int main(){
+    int T;
+    cin >> T;
+    FOR(t, T){
+        solve();
+        cout << nl;
+    }
+    
+    return 0;
+}

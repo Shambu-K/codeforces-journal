@@ -1,3 +1,3 @@
 # codeforces-journal
-journey to specialist/
+journey to specialist\
 sdssd

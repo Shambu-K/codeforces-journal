@@ -1,3 +1,3 @@
 # codeforces-journal
 journey to specialist\
-sdssd
+account link: https://codeforces.com/profile/rivak

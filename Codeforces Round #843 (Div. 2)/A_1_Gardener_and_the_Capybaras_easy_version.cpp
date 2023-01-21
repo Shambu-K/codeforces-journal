@@ -29,27 +29,33 @@ using vll = V<ll>;
 
 
 void solve(){
-    int m;
-    cin >> m;
-    string matrix[2];
-    for(int i = 0; i < 2; i++){
-        cin >> matrix[i];
-    }
-    vector<pair<int, int>> whitepos;
-    for(auto j = 0; j < m; j++){
-        for(auto i = 0; i < 2; i++){
-            if(matrix[i][j] == 'W') whitepos.push_back({i,j});
+    string s;
+    cin >> s;
+    int n = s.length();
+    for(auto i = 1; i < n-1; i++){
+        if(s[i] == 'a'){
+            string a = s.substr(0, i);
+            string b = "a";
+            string c = s.substr(i+1, n-i);
+            cout << a << " " << b << " " << c;
+            return;
         }
     }
-    int size = whitepos.size();
-    for(auto i = 0; i < size-1; i++){
-        int brows = whitepos[i+1].second - whitepos[i].second - 1;
-        if(whitepos[i].first == whitepos[i+1].first && brows%2 != 0) pN;
-        if(whitepos[i].first != whitepos[i+1].first && brows%2 == 0) pN; 
+    if(s[0] == 'a' && s[n-1] == 'a'){
+        string b = s.substr(1, n-2);
+        cout << "a " << b << " a"; return;
     }
-    pY;
-    
-     
+    if(n == 3 && s[1] == 'b'){
+        cout << s[0] << " " << s[1] << " " << s[2]; return;
+    }
+    for(auto i = 1; i < n-2; i++){
+        if(s[i] == 'b' && s[i] == s[i+1]){
+            string b = s.substr(i, n-2);
+            cout << s[0] << " " << b << " " << s[n-1];
+            return;
+        }
+    }
+    cout << ": (";
 }
 
 int main(){

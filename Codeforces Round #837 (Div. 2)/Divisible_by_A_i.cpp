@@ -27,29 +27,23 @@ using pll = pair<ll,ll>;
 using vi  = V<int>;
 using vll = V<ll>;
 
+int f(vector<int>& a, int& b){
+    int ans = b;
+    int n = a.size();
+    for(auto i = 0; i < n; i++){
+        if(a[i]% x == 0)
+    }
+}
 
 void solve(){
-    int m;
-    cin >> m;
-    string matrix[2];
-    for(int i = 0; i < 2; i++){
-        cin >> matrix[i];
+    int n;
+    cin >> n;
+    vi a(n);
+    cin >> a;
+    for(int i = 0; i < n; i++){
+        int y = f(a, a[i]);
+        cout << y << " ";
     }
-    vector<pair<int, int>> whitepos;
-    for(auto j = 0; j < m; j++){
-        for(auto i = 0; i < 2; i++){
-            if(matrix[i][j] == 'W') whitepos.push_back({i,j});
-        }
-    }
-    int size = whitepos.size();
-    for(auto i = 0; i < size-1; i++){
-        int brows = whitepos[i+1].second - whitepos[i].second - 1;
-        if(whitepos[i].first == whitepos[i+1].first && brows%2 != 0) pN;
-        if(whitepos[i].first != whitepos[i+1].first && brows%2 == 0) pN; 
-    }
-    pY;
-    
-     
 }
 
 int main(){

@@ -29,27 +29,16 @@ using vll = V<ll>;
 
 
 void solve(){
-    int m;
-    cin >> m;
-    string matrix[2];
-    for(int i = 0; i < 2; i++){
-        cin >> matrix[i];
+    ll n, k;
+    cin >> n >> k;
+    int sum = (n*(n+1))/2;
+    if(k >= sum){
+        for(auto i = 0; i < n-1; i++)
+            cout << "1" << " ";
+        cout << k-sum+1;
     }
-    vector<pair<int, int>> whitepos;
-    for(auto j = 0; j < m; j++){
-        for(auto i = 0; i < 2; i++){
-            if(matrix[i][j] == 'W') whitepos.push_back({i,j});
-        }
-    }
-    int size = whitepos.size();
-    for(auto i = 0; i < size-1; i++){
-        int brows = whitepos[i+1].second - whitepos[i].second - 1;
-        if(whitepos[i].first == whitepos[i+1].first && brows%2 != 0) pN;
-        if(whitepos[i].first != whitepos[i+1].first && brows%2 == 0) pN; 
-    }
-    pY;
-    
-     
+    else cout << -1;
+
 }
 
 int main(){

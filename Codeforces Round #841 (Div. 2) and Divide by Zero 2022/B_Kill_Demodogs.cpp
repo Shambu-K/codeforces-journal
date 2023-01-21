@@ -29,27 +29,19 @@ using vll = V<ll>;
 
 
 void solve(){
-    int m;
-    cin >> m;
-    string matrix[2];
-    for(int i = 0; i < 2; i++){
-        cin >> matrix[i];
-    }
-    vector<pair<int, int>> whitepos;
-    for(auto j = 0; j < m; j++){
-        for(auto i = 0; i < 2; i++){
-            if(matrix[i][j] == 'W') whitepos.push_back({i,j});
-        }
-    }
-    int size = whitepos.size();
-    for(auto i = 0; i < size-1; i++){
-        int brows = whitepos[i+1].second - whitepos[i].second - 1;
-        if(whitepos[i].first == whitepos[i+1].first && brows%2 != 0) pN;
-        if(whitepos[i].first != whitepos[i+1].first && brows%2 == 0) pN; 
-    }
-    pY;
+    ll n;
+    cin >> n;
+    ll ans = 0;
+    // ans = (337*n*(4*n-1)*(n+1))%MOD;
+    ll t1 = (337*4*n)%MOD;
+    t1 *= n%MOD;
+    t1 *= n%MOD;
+    ll t2 = (337*3*n)%MOD;
+    t2 *= n%MOD;
+    ll t3 = (337*n)%MOD;
+    ans += (t1%MOD+t2%MOD+t3%MOD)%MOD;
+    cout << ans;
     
-     
 }
 
 int main(){

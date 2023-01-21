@@ -29,27 +29,25 @@ using vll = V<ll>;
 
 
 void solve(){
-    int m;
-    cin >> m;
-    string matrix[2];
-    for(int i = 0; i < 2; i++){
-        cin >> matrix[i];
+    string a, b;
+    cin >> a >> b;
+    int n = a.length();
+    int z1 = 0, o1 = 0, z2 = 0, o2 = 0;
+    for(auto i = 0; i < n; i++){
+        if(a[i] == '0') z1++;
+        else o1++;
     }
-    vector<pair<int, int>> whitepos;
-    for(auto j = 0; j < m; j++){
-        for(auto i = 0; i < 2; i++){
-            if(matrix[i][j] == 'W') whitepos.push_back({i,j});
-        }
+    for(auto i = 0; i < n; i++){
+        if(b[i] == '0') z2++;
+        else o2++;
     }
-    int size = whitepos.size();
-    for(auto i = 0; i < size-1; i++){
-        int brows = whitepos[i+1].second - whitepos[i].second - 1;
-        if(whitepos[i].first == whitepos[i+1].first && brows%2 != 0) pN;
-        if(whitepos[i].first != whitepos[i+1].first && brows%2 == 0) pN; 
-    }
-    pY;
-    
-     
+    int set1 = min(z1, o2);
+    int set2 = min(z2, o1);
+    int ans = set1+set2;
+    for(auto i = 0; i < ans; i++)
+        cout << '1';
+    for(auto i = 0; i < n-ans; i++)
+        cout << '0';
 }
 
 int main(){

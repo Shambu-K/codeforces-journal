@@ -27,28 +27,35 @@ using pll = pair<ll,ll>;
 using vi  = V<int>;
 using vll = V<ll>;
 
+bool check(){
+    return true;
+}
 
 void solve(){
-    int m;
-    cin >> m;
-    string matrix[2];
-    for(int i = 0; i < 2; i++){
-        cin >> matrix[i];
+    int n, m;
+    cin >> n >> m;
+    int ans = n;
+    vector<int> frnds[n+1];
+    for(auto i = 0; i < m; i++){
+        int a, b;
+        cin >> a >> b;
+        frnds[a].push_back(b);
+        frnds[b].push_back(a);
     }
-    vector<pair<int, int>> whitepos;
-    for(auto j = 0; j < m; j++){
-        for(auto i = 0; i < 2; i++){
-            if(matrix[i][j] == 'W') whitepos.push_back({i,j});
+    for(auto i = 0; i < n+1; i++)
+        sort(all(frnds[i]));
+    int add = 0;
+    for(auto i = 1; i <= n-1; i++){
+        auto j = i+1;
+        int node = n+1;
+        for(j = i+1; j <= n; j++){
+            if(frnds[j][0] < j){
+                node = j;break;
+            } 
         }
+        add+= node-1-i;
     }
-    int size = whitepos.size();
-    for(auto i = 0; i < size-1; i++){
-        int brows = whitepos[i+1].second - whitepos[i].second - 1;
-        if(whitepos[i].first == whitepos[i+1].first && brows%2 != 0) pN;
-        if(whitepos[i].first != whitepos[i+1].first && brows%2 == 0) pN; 
-    }
-    pY;
-    
+    cout << ans+add;
      
 }
 

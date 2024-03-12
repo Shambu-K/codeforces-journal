@@ -1,5 +1,5 @@
 # codeforces-journal
-journey to specialist\
+journey to expert\
 account link: https://codeforces.com/profile/rivak
 
 ## Update-1
